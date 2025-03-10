@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lineas {% endblock %}
+
+
+
+{% block contenido %}
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteo de Escaneos QR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Conteo de Escaneos QR</h1>
+        <table class="table table-striped mt-4">
+            <thead class="table-dark">
+                <tr>
+                    <th>Documento</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Línea</th>
+                    <th>Veces Escaneado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in contar %}
+                <tr>
+                    <td>{{ item.documento }}</td>
+                    <td>{{ item.nombre }}</td>
+                    <td>{{ item.apellidos }}</td>
+                    <td>{{ item.linea }}</td>
+                    <td>{{ item.count }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No hay datos para mostrar.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+{%  endblock %}
